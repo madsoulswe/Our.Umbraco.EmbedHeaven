@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net472;net5.0;net6.0</TargetFrameworks>
+		<RootNamespace>Our.Umbraco.EmbedHeaven</RootNamespace>
+
+		<IncludeContentInPack>true</IncludeContentInPack>
+		<ContentTargetFolders>content</ContentTargetFolders>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<OutputPath>bin\output\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+		<PackageReference Include="UmbracoCms.Core" Version="8.7.1" />
+		<PackageReference Include="UmbracoCms.Web" Version="8.7.1" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+		<PackageReference Include="Umbraco.Cms.Core" Version="9.0.0" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+		<PackageReference Include="Umbraco.Cms.Core" Version="10.0.0-rc4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="**\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="EmbedHeavenComposer.cs" />
+	  <Compile Include="EmbedProviders\GoogleDocsEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\GoogleMapsEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\TwitchEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\iFixitEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\GfycatEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\CodePenEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\SpotifyEmbedProvider.cs" />
+	</ItemGroup>
+</Project>

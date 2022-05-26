@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.EmbedHeaven.SiteV8", "Our.Umbraco.EmbedHeaven.SiteV8\Our.Umbraco.EmbedHeaven.SiteV8.csproj", "{E4E68E57-A880-4CC3-91EE-50AD86FFCFBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Our.Umbraco.EmbedHeaven", "Our.Umbraco.EmbedHeaven\Our.Umbraco.EmbedHeaven.csproj", "{9115C637-7BF3-4E11-BA16-CA1C0A3BB8A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Our.Umbraco.EmbedHeaven.SiteV9", "Our.Umbraco.EmbedHeaven.SiteV9\Our.Umbraco.EmbedHeaven.SiteV9.csproj", "{4F1FA80F-091B-4231-BBB8-F3412B20B307}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Our.Umbraco.EmbedHeaven.SiteV10", "Our.Umbraco.EmbedHeaven.SiteV10\Our.Umbraco.EmbedHeaven.SiteV10.csproj", "{C6A4133E-0179-47CD-80E9-9CBF5C57A8ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4E68E57-A880-4CC3-91EE-50AD86FFCFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E68E57-A880-4CC3-91EE-50AD86FFCFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E68E57-A880-4CC3-91EE-50AD86FFCFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E68E57-A880-4CC3-91EE-50AD86FFCFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9115C637-7BF3-4E11-BA16-CA1C0A3BB8A4}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{9115C637-7BF3-4E11-BA16-CA1C0A3BB8A4}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{9115C637-7BF3-4E11-BA16-CA1C0A3BB8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9115C637-7BF3-4E11-BA16-CA1C0A3BB8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1FA80F-091B-4231-BBB8-F3412B20B307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1FA80F-091B-4231-BBB8-F3412B20B307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1FA80F-091B-4231-BBB8-F3412B20B307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1FA80F-091B-4231-BBB8-F3412B20B307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A4133E-0179-47CD-80E9-9CBF5C57A8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A4133E-0179-47CD-80E9-9CBF5C57A8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A4133E-0179-47CD-80E9-9CBF5C57A8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A4133E-0179-47CD-80E9-9CBF5C57A8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A4335E4-0198-4777-9409-64E22F1F8F2C}
+	EndGlobalSection
+EndGlobal
