@@ -41,6 +41,9 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
             var regex = new Regex(UrlSchemeRegex[0], RegexOptions.IgnoreCase);
             var matches = regex.Match(url);
 
+            var height = (maxHeight == 0 ? 400 : maxHeight);
+            var width = (maxWidth == 0 ? 800 : maxWidth);
+
             if (matches.Success) {
                 var channelName = matches.Groups[1];
                 var type = getType(url);
@@ -71,13 +74,13 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
                 }
                 
                 //src = !empty($pars_url['host']) ?$src.'&parent='.$pars_url['host']:$src;
-                var html = $"<iframe src=\"{src}\" height=\"{(maxHeight == 0 ? 400 : maxHeight)}\" width=\"{(maxWidth == 0 ? 800 : maxWidth)}\"  {attrs}></iframe>";
+                var html = $"<iframe src=\"{src}\" height=\"{height}\" width=\"{width}\"  {attrs}></iframe>";
 
                 return new OEmbedResponse()
                 {
                     Type = type,
-                    Width = maxWidth,
-                    Height = maxHeight,
+                    Width = width,
+                    Height = height,
                     Html = html,
                     Url = url,
                     ProviderName = "Twitch",

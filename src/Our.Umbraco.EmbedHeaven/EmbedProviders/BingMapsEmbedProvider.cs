@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 #if NET472
 using Umbraco.Web.Media.EmbedProviders;
@@ -15,7 +16,7 @@ using Umbraco.Cms.Core.Serialization;
 
 namespace Our.Umbraco.EmbedHeaven.EmbedProviders
 {
-    public class GoogleMapsEmbedProvider : EmbedProviderBase
+    public class BingMapsEmbedProvider : EmbedProviderBase
     {
 #if NET5_0 || NET6_0
         public GoogleMapsEmbedProvider(IJsonSerializer jsonSerializer) : base(jsonSerializer) { }
@@ -24,7 +25,7 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
 
         public override string[] UrlSchemeRegex => new string[]
         {
-            @"http[s]?:\/\/(?:(?:(?:www\.|maps\.)?(?:google\.com?))|(?:goo\.gl))(?:\.[a-z]{2})?\/(?:maps\/)?(?:place\/)?(?:[a-z0-9\/%+\-_]*)?([a-z0-9\/%,+\-_=!:@\.&*\$#?\']*)"
+            @"http[s]?:\/\/(?:(?:(?:www\.)?(?:bing\.com?)))\/(?:maps\/)"
         };
 
         public override Dictionary<string, string> RequestParams => new Dictionary<string, string>();
@@ -37,28 +38,24 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
         public OEmbedResponse FakeResponse(string url, int maxWidth = 0, int maxHeight = 0)
         {
             var src = "";
-
-            var attrs = "";
             var height = (maxHeight == 0 ? 450 : maxHeight);
             var width = (maxWidth == 0 ? 600 : maxWidth);
 
-            if (Regex.IsMatch(url, "(maps/embed|output=embed)", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(url, "(maps/embed)", RegexOptions.IgnoreCase))
             {
                 src = url;
             }
             else
             {
-                var cordRegex = new Regex(@"@(-?[0-9\.]+,-?[0-9\.]+).+,([0-9\.]+[a-z])", RegexOptions.IgnoreCase);
-                var matches = cordRegex.Match(url);
+                var query = HttpUtility.ParseQueryString(url);
 
-                if(matches.Success)
-                {
-                    src = $"https://maps.google.com/maps?hl=en&ie=UTF8&ll={matches.Groups[1]}&spn={matches.Groups[1]}&t=m&z={matches.Groups[2]}&output=embed";
-                }
+                if (query["cp"] == null)
+                    return null;
+
+                src = $"https://www.bing.com/maps/embed?h={height}&w={width}&cp={query["cp"]}&lvl={(query["lvl"] ?? "1")}& typ=d&sty=r&src=SHELL&FORM=MBEDV8";
             }
 
-            //src = !empty($pars_url['host']) ?$src.'&parent='.$pars_url['host']:$src;
-            var html = $"<iframe src=\"{src}\" height=\"{height}\" width=\"{width}\"  {attrs}></iframe>";
+            var html = $"<iframe src=\"{src}\" height=\"{height}\" width=\"{width}\" scrolling=\"no\"></iframe>";
 
             return new OEmbedResponse()
             {
@@ -67,8 +64,8 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
                 Height = height,
                 Html = html,
                 Url = url,
-                ProviderName = "Google Maps",
-                ProviderUrl = "https://maps.google.com"
+                ProviderName = "Bing Maps",
+                ProviderUrl = "https://www.bing.com/maps/"
             };
             
         }

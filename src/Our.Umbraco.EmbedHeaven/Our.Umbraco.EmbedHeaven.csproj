@@ -30,12 +30,15 @@
 
 	<ItemGroup>
 	  <Compile Include="EmbedHeavenComposer.cs" />
+	  <Compile Include="EmbedProviders\ImgurEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\GoogleDocsEmbedProvider.cs" />
+	  <Compile Include="EmbedProviders\BingMapsEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\GoogleMapsEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\TwitchEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\iFixitEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\GfycatEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\CodePenEmbedProvider.cs" />
 	  <Compile Include="EmbedProviders\SpotifyEmbedProvider.cs" />
+	  <Compile Include="TagHelpers\OEmbedTagHelper.cs" />
 	</ItemGroup>
 </Project>

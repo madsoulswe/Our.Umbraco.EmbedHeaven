@@ -44,6 +44,9 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
             var typeRegex = Regex.Match(url, @"google\.com\/(?:.+\/)?(document|presentation|spreadsheets|forms|drawings)/");
             var type = typeRegex.Groups[1]?.ToString().ToLower();
 
+            var height = (maxHeight == 0 ? 450 : maxHeight);
+            var width = (maxWidth == 0 ? 600 : maxWidth);
+
             switch (type)
             {
                 case "document":
@@ -83,22 +86,24 @@ namespace Our.Umbraco.EmbedHeaven.EmbedProviders
                     break;
             }
             var html = "";
-            //src = !empty($pars_url['host']) ?$src.'&parent='.$pars_url['host']:$src;
 
             if(type != "drawing")
             {
-                html = $"<iframe src=\"{src}\" frameborder=\"0\" height=\"{(maxHeight == 0 ? 450 : maxHeight)}\" width=\"{(maxWidth == 0 ? 600 : maxWidth)}\"  allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\" { attrs}></iframe>";
+
+                html = $"<iframe src=\"{src}\" frameborder=\"0\" height=\"{height}\" width=\"{width}\"  allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\" { attrs}></iframe>";
             } else
             {
-                html = $"<iframe src=\"{src}\" frameborder=\"0\" height=\"{(maxHeight == 0 ? 720 : maxHeight)}\" width=\"{(maxWidth == 0 ? 960 : maxWidth)}\"  {attrs}></iframe>";
+                height = (maxHeight == 0 ? 720 : maxHeight);
+                width = (maxWidth == 0 ? 960 : maxWidth);
+                html = $"<iframe src=\"{src}\" frameborder=\"0\" height=\"{height}\" width=\"{width}\"  {attrs}></iframe>";
             }
             
 
             return new OEmbedResponse()
             {
                 Type = "rich",
-                Width = maxWidth,
-                Height = maxHeight,
+                Width = width,
+                Height = height,
                 Html = html,
                 Url = url,
                 ProviderName = "Google Docs",
